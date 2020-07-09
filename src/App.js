@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import BucketListItems from './BucketListItems';
+import AddBucketItem from './Add';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    bucketlist: [
+    ]
+  }
+  deleteBucketListItem = (id) =>{
+    const bucketlist = this.state.bucketlist.filter(item => {
+      return item.id !== id;
+    });
+    this.setState({
+      bucketlist
+    })
+  }
+
+  addBucketListItem = (bucketitem) =>{
+    bucketitem.id = Math.random();
+    let bucketlist = [...this.state.bucketlist, bucketitem];
+    this.setState({bucketlist});
+  }
+
+  render(){
+    return (
+      <div className="bucketlist-app container">
+        <h1 className = "center red-text text-lighten-3"> Bucket List ☀︎ </h1>
+        <BucketListItems bucketlist = {this.state.bucketlist} deleteBucketListItem = {this.deleteBucketListItem}/>
+        <AddBucketItem addBucketListItem = {this.addBucketListItem}/>
+      </div>
+    );
+  }
 }
 
 export default App;
