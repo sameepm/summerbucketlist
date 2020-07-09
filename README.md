@@ -1,4 +1,4 @@
-Just a lil simple aesthetic experimentation of a bucket list app.
+Just a lil simple aesthetic experimentation of a bucket list web app.
 
 Will probably continue to make it pretty. 
 
